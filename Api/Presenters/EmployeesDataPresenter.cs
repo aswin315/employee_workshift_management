@@ -36,15 +36,15 @@ namespace Api.Presenters
             foreach (var workShift in workShifts)
             {
                 var shift = workShift.Shift;
-                var month = shift.ShiftStart.ToString("MMMM");
-                var totalShiftTime = shift.ShiftEnd.Subtract(shift.ShiftStart).Hours;
+                var month = shift.Month;
+
                 if (workingHours.ContainsKey(month))
                 {
-                    workingHours[month] += totalShiftTime;
+                    workingHours[month] +=  shift.Hours;
                 }
                 else
                 {
-                    workingHours.Add(month, totalShiftTime);
+                    workingHours.Add(month, shift.Hours);
                 }
             }
             return workingHours;
