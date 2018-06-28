@@ -21,5 +21,9 @@ namespace Api.Models
         public string ShiftName { get; set; }
 
         public ICollection<EmployeeWorksShift> EmployeeWorksShifts { get; set; }
+
+        public string Month => ShiftStart.ToString("MMMM");
+
+        public int Hours => ShiftEnd.Subtract(ShiftStart).Hours;
     }
 }
