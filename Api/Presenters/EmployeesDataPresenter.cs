@@ -24,7 +24,7 @@ namespace Api.Presenters
                         new EmployeeViewModel
                         {
                             ID = employee.EmployeeID,
-                            EmployeeName = EmployeeName(employee),
+                            EmployeeName = employee.EmployeeName,
                             TotalWorkingHours = WorkingHours(employee.EmployeeWorksShifts.ToList())
                         };
             return employeeInformation.ToList();
@@ -48,10 +48,6 @@ namespace Api.Presenters
                 }
             }
             return workingHours;
-        }
-        private string EmployeeName(Employee employee)
-        {
-            return $"{employee.FirstName} {employee.Surname}";
         }
     }
 }

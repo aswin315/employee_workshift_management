@@ -16,5 +16,6 @@ namespace Api.Models
         public string Surname { get; set; }
 
         public IList<EmployeeWorksShift> EmployeeWorksShifts { get; set; }
+        public string EmployeeName => $"{FirstName} {Surname}";
     }
 }
