@@ -15,6 +15,6 @@ namespace Api.Models
         [StringLength(50)]
         public string Surname { get; set; }
 
-        public ICollection<EmployeeWorksShift> EmployeeWorksShifts { get; set; }
+        public IList<EmployeeWorksShift> EmployeeWorksShifts { get; set; }
     }
 }
