@@ -19,6 +19,7 @@ namespace Api.Services
         {
             return _employeeShiftContext.Employees
                 .Include(e => e.EmployeeWorksShifts)
+                .ThenInclude( k => k.Shift)
                 .ToList();
         }
     }

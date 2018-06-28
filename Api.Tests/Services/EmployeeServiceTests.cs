@@ -71,6 +71,26 @@ namespace Api.Tests
             Assert.Equal(3, items.Count);
         }
 
+        [Fact]
+        public void GetEmployess_WhenCalledAfterSettingData_ReturnsEmployeesWithWorkShiftsAndShiftInformation()
+        {
+            // Arrange
+            SetupDb(out DbContextOptions<EmployeeShiftContext> options);
+            var dbcontext = new EmployeeShiftContext(options);
+
+            var service = new EmployeeService(dbcontext);
+
+            // Act
+            var result = service.GetEmployees();
+
+            // Assert
+            var workShift = result
+                .First(e => e.EmployeeID == 1)
+                .EmployeeWorksShifts.First( x=> x.ShiftID == 1)
+                .Shift;
+            Assert.Equal("First Shift", workShift.ShiftName);
+        }
+
         private void SetupDb(out DbContextOptions<EmployeeShiftContext> options)
         {
             options = DbContextOptions();
