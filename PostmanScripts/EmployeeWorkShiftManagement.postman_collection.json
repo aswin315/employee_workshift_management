@@ -1,0 +1,75 @@
+{
+  "info":{
+    "_postman_id":"ceb9ead5-6937-4e3f-beb2-3657cbaa9433",
+    "name":"EmployeeWorkShiftManagement",
+    "schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item":[
+    {
+      "name":"GetEmployees",
+      "event":[
+        {
+          "listen":"test",
+          "script":{
+            "id":"e62e3ab0-01ab-44aa-9506-71fcc61bdecb",
+            "type":"text/javascript",
+            "exec":[
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Correct Schema is returned\", function () {",
+              "   var jsonData = pm.response.json();",
+              "   var bodySchema = {",
+              "       \"type\": \"array\",",
+              "       \"items\": [{",
+              "           \"type\": \"object\",",
+              "           \"required\": [\"id\", \"employeeName\", \"totalWorkingHours\"],",
+              "           \"properties\": {",
+              "               \"id\": {",
+              "                   \"type\": \"integer\"",
+              "               },",
+              "               \"employeeName\": {",
+              "                   \"type\": \"string\"",
+              "               },",
+              "               \"totalWorkingHours\": {",
+              "                   \"type\": \"object\",",
+              "",
+              "               }",
+              "           }",
+              "       }]",
+              "   };",
+              "    ",
+              "    pm.expect(tv4.validate(jsonData, bodySchema)).to.be.true",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request":{
+        "method":"GET",
+        "header":[
+
+        ],
+        "body":{
+
+        },
+        "url":{
+          "raw":"https://localhost:44351/api/employees",
+          "protocol":"https",
+          "host":[
+            "localhost"
+          ],
+          "port":"44351",
+          "path":[
+            "api",
+            "employees"
+          ]
+        }
+      },
+      "response":[
+
+      ]
+    }
+  ]
+}
