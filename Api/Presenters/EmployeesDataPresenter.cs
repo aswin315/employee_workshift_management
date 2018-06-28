@@ -25,14 +25,15 @@ namespace Api.Presenters
                         {
                             ID = employee.EmployeeID,
                             EmployeeName = employee.EmployeeName,
-                            TotalWorkingHours = WorkingHours(employee.EmployeeWorksShifts.ToList())
+                            TotalWorkingHours = WorkingHours(employee.EmployeeWorksShifts)
                         };
             return employeeInformation.ToList();
         }
 
-        private Dictionary<string, int> WorkingHours(List<EmployeeWorksShift> workShifts)
+        private Dictionary<string, int> WorkingHours(IList<EmployeeWorksShift> workShifts)
         {
             var workingHours = new Dictionary<string, int>();
+                          
             foreach (var workShift in workShifts)
             {
                 var shift = workShift.Shift;
