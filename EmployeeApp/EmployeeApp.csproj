@@ -3,14 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-    <UserSecretsId>4dfc9431-8fb0-4871-a7e4-6e42044b1a98</UserSecretsId>
+    <UserSecretsId>f014ffe9-a15f-4024-89d2-7d19fa2a687f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Flurl" Version="2.7.1" />
+    <PackageReference Include="Flurl.Http" Version="2.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
   </ItemGroup>

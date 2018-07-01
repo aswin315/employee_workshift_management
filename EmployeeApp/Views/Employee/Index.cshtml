@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EmployeeApp.ViewModels.EmployeeViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalWorkingHours)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    <table>
+                        @foreach (var shift in item.TotalWorkingHours)
+                        {
+                            <tr>
+                                <td style="padding-right:20px">@shift.Key</td>
+                                <td>@shift.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
