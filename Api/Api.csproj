@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>4dfc9431-8fb0-4871-a7e4-6e42044b1a98</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
