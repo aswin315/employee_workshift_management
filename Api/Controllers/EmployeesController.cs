@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Api.Data;
 using Api.Models;
-using Api.Presenters;
-using Api.ViewModels;
+using Api.Services;
 
 namespace Api.Controllers
 {
@@ -16,18 +9,18 @@ namespace Api.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly IEmployeesDataPresenter _dataPresenter;
+        private readonly IEmployeeSummaryService _employeeSummaryService;
 
-        public EmployeesController(IEmployeesDataPresenter dataPresenter)
+        public EmployeesController(IEmployeeSummaryService dataPresenter)
         {
-            _dataPresenter = dataPresenter;
+            _employeeSummaryService = dataPresenter;
         }
 
         // GET: api/Employees
         [HttpGet]
-        public IEnumerable<EmployeeViewModel> GetEmployees()
+        public IEnumerable<EmployeeSummary> GetEmployees()
         {
-            return _dataPresenter.GetEmployeesData();
+            return _employeeSummaryService.GetEmployeesSummary();
         }
     }
 }
