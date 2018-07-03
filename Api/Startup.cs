@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Data;
+﻿using Api.Data;
 using Api.Presenters;
 using Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Api
 {
@@ -30,6 +23,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Configuring Services
+            services.AddScoped<IEmployeeSummaryService, EmployeeSummaryService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeesDataPresenter, EmployeesDataPresenter>();
 
